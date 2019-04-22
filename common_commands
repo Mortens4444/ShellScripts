@@ -1,0 +1,74 @@
+Basic commands
+-------------------------
+man man // Manual pages for man command
+ls // List files
+cat /etc/passwd // Show content of /etc/passwd
+pico newfile // Create newfile
+pwd // Print working directory
+mc // Midnight Commander
+which nmap // Locate nmap
+cd .. // Change directory
+mkdir test // Create folder test
+cp source dest // Copy source to dest
+sync // Finish writing operations
+rm file // Deletes file
+rm -rf / // Recursively delete each file on file hierarchy - DO NOT TRY THIS COMMAND!
+
+Advanced commands
+-------------------------------
+sudo mount /dev/sdb1 /media/mortens/AC86-9A55 // Mount sdb1 device into folder AC86-9A55
+umount /media/mortens/AC86-9A55 // Detach file system from file hierarchy
+file fname // Determine fname file type
+ps aux // Get running applications
+kill -9 `ps aux | grep vlc | awk '{ print $2 }'` // Kill vlc applications
+xrandr -s 0 // Change screen size
+xset s off -dpms // Disable sceen saver
+useradd tester // Add user to system
+dpkg -i package.deb // Install deb file
+reboot // Restart machine
+chmod +x steam // Add executable right to steam
+dmesg // Display all messages from the kernel ring buffer
+watch -c -n1 'dmesg | tail -n 20' // Watch system messages live
+sudo modprobe -r uvcvideo // Turn off webcamera
+sudo modprobe uvcvideo // Turn on webcamera
+ftp 192.168.0.1 // Create FTP connection
+telnet 192.168.0.1 // Create Telnet connection
+
+Installation commands
+---------------------
+apt-get update // Update updater packages
+apt-get upgrade // Update system
+dpkg -i opera-stable_44.0.2510.1449_amd64.deb // Install a deb file
+
+Install a service
+-----------------
+systemctl stop smbd // Stop running service
+wget https://www.samba.org/samba/ftp/samba-latest.tar.gz // Download the package
+tar xzf samba-latest.tar.gz // Extract it
+cd samba-4.6.4 // Go into the extracted folder
+./configure // Build service from sources
+make // Start compilation
+make install // Install the compiled application
+systemctl restart smbd // Restart service
+
+Other commands
+-------------------------
+grep -rnw '.' -e "ToAsciiReturnCode" // Search for ToAsciiReturnCode in files in the actual folder
+unzip -p document.docx word/document.xml | sed -e 's/<\/w:p>/\n/g; s/<[^>]\{1,\}>//g; s/[^[:print:]\n]\{1,\}//g' // Print content of a docx file
+find / -name .cap 2> /dev/null // Search for files with redirected error output
+openssl enc -aes-256-cbc -k password -in hello -out hello.enc // Encrypt file with "password"
+openssl enc -d -aes-256-cbc -k password -in hello.enc -out hello.dec // Decrypt file with "password"
+
+Penetration test commands
+----------------------------------------
+sudo -i // Superuser do
+ssh cisco@example.com // Connect to router
+service network-manager stop; ifconfig wlan0 down; macchanger -m 12:34:56:78:90:AB wlan0;  // Change MAC address
+iw list // Check if WLAN network card supports monitor mode
+ifconfig // Check network interfaces
+airmon-ng start wlan0 // Start monitor mode on WLAN device
+airodump-ng wlan0mon // Monitor mode
+airodump-ng wlan0mon --bssid 12:34:56:78:90:AB -c 1 -w filename_prefix // Save packets from a specific MAC address and channel into file
+wash -i wlan0mon // Provide information from access points
+reaver -i wlan0mon --bssid 12:34:56:78:90:AB // Try to get WPA / WPA2 password of AP
+nmap -Pn 192.168.0.1 // Get running services
